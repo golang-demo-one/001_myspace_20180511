@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>{{.Title}}</title>
+			<script type="text/javascript">
+						function putComment(el) {
+							alert("putComment() function begin works")
+							var id = $(el).find('.edit_id');
+							var name = $(el).find('.edit_name').val();
+							var email = $(el).find('.edit_email').val();
+							var text = $(el).find('.edit_comments').val();
+							$.ajax({
+								url: '/api/comments/' + id,
+								type: 'PUT',
+								//data: {id:$("id"),name:$("name"),email:$("email"),text:$("text")},
+								//dataType: json,								
+								success: function(res) {
+									alert('Comment Updated!');
+								}
+							
+							});
+							alert("Comment dropped!");
+							return false;
+						}
+					</script>
+					<!--script>
+						alert("My First JavaScript");
+					</script-->
+	</head>
+	<body>
+		<h1>{{.Title}}</h1>
+		<p>
+		{{.Content}}
+		</p>
+		<div>{{.Date}}</div>
+			{{range .Comments}}
+			    <hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+				<div class="comment">
+				    <div><i>Comment by {{.Name}} ({{.Email}}) {{.Date}} {{.Id}}</i></div>
+					<font size="4" face="arial" color="blue">{{.CommentText}}</font>
+                </div>	
+				<!--hr style="height:1px;border:none;border-top:1px dashed #0066CC;" /-->
+				<div class="comment_edit">
+					<h2>Edit</h2>
+					<form onsubmit="return putComment(this);">
+						<input type="text" class="edit_id" value="{{.Id}}" />
+						<input type="text" name="name" class="edit_name" placeholder="Your name" value="{{.Name}}" />
+						<input type="text" name="email" class="edit_email" placeholder="Your email" value="{{.Email}}" />
+						<textarea class="edit_comments" name="comments">{{.CommentText}}</textarea>
+						<input type="submit" value="Edit" />
+					</form>
+
+				</div>
+				
+			{{end}}	
+		<div id="comments">
+			<form action="/api/comments" method="POST">
+			    <input type="hidden" name="guid" value="{{.GUID}}" />
+				<div>
+					<input type="text" name="name" placeholder="Your Name" />
+				</div>
+				<div>
+					<input type="email" name="email" placeholder="Your Email" />
+				</div>
+				<div>
+					<textarea name="comments" placeholder="Your Comments" /></textarea>
+				</div>
+				<div>
+					<input type="submit" value="Add Comments" />
+				</div>		
+			</form>
+		</div>
+	</body>
+</html>
