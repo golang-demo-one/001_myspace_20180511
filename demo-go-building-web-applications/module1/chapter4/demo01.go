@@ -16,8 +16,8 @@ import (
 )
 
 const (
-	DBHost = "db4free.net"
-	//DBHost  = "127.0.0.1"
+	//DBHost = "db4free.net"
+	DBHost  = "127.0.0.1"
 	DBPort  = ":3306"
 	DBUser  = "testuser0912"
 	DBPass  = "ycliu912"

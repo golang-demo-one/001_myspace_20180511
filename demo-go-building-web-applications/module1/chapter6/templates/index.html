@@ -1,0 +1,40 @@
+<h1>Homepage</h1>
+
+{{range .}}
+	<div><a href="/pages/{{.GUID}}">{{.Title}}</a></div>
+	<div>{{.TruncatedText}}</div>
+	<div>{{.Date}}</div>	
+{{end}}
+
+							<div>
+			<form action="/login" method="POST">
+				<div>
+					<input type="text" name="user_name" placeholder="User name"/>
+				</div>
+				<div>
+					<input type="password" name="user_password" placeholder="Password"/>
+				</div>
+				<div>
+					<input type="submit" value="Log in"/>
+				</div>
+			</form>
+			</div>
+<div>
+			<form action="/register" method="POST">
+				<div>
+					<input type="text" name="user_name" placeholder="User name"/>
+				</div>
+				<div>
+					<input type="email" name="user_email" placeholder="User email"/>
+				</div>
+				<div>
+					<input type="password" name="user_password" placeholder="Password"/>
+				</div>
+				<div>
+					<input type="password" name="user_password2" placeholder="Password(repeat)"/>
+				</div>
+				<div>
+					<input type="submit" value="Register"/>
+				</div>
+			</form>
+			</div>

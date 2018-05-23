@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>test</title>
+	</head>
+	<body>
+		<h1>test</h1>
+		<p>
+		just test
+		</p>
+		<div>2018 5 21</div>
+		<div id="comments">
+			<script>  
+				function fun()  
+				{  
+					alert("form_submit");  
+				}  
+			</script>  
+
+			<form onsubmit="fun()">  
+				<input type="submit" id="aaa" value="submit"/>   <!--能弹出form_submit-->  
+				<input type="button" id="bbb" value="onCliCk_submit" onCliCk="doCument.forms[0].submit()"/>  
+				<!--  
+表单会提交，但是不会运行fun() 原因是 onsubmit事件不能通过此种方式触发（在IE环境）  
+直接用脚本doCumetn.formName.submit()提交表单是不会触发表单的onsubmit()事件的  
+-->  
+				<input type="button" id="bb1" value="onCliCk_onsubmit" onCliCk="doCument.forms[0].onsubmit()"/>  
+
+				<!--会触发fun()参数-->  
+			</form> 
+		</div>
+	</body>
+</html>
